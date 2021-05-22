@@ -1,4 +1,3 @@
-import csv
 import sys
 import pandas
 import numpy
@@ -16,10 +15,10 @@ friendPairing = friendPairing.reset_index([0, 'user_id'])
 friendPairing.columns = ['friend1ID', 'friend2ID']
 
 # checking for duplicates + reverse duplicates
-something = pandas.DataFrame(numpy.sort(friendPairing.values, axis = 1), columns = friendPairing.columns).drop_duplicates()
+noDuplicates = pandas.DataFrame(numpy.sort(friendPairing.values, axis = 1), columns = friendPairing.columns).drop_duplicates()
 
 with open('yelp-network.txt', 'w') as myfile:
-  something.to_csv(myfile, header= None, index = False)
+  noDuplicates.to_csv(myfile, header= None, index = False)
 
 #read input file
 f = open("yelp-network.txt", "r")
