@@ -19,19 +19,20 @@ friendPairing.columns = ['friend1ID', 'friend2ID']
 something = pandas.DataFrame(numpy.sort(friendPairing.values, axis = 1), columns = friendPairing.columns).drop_duplicates()
 
 with open('yelp-network.txt', 'w') as myfile:
-  something.to_csv(myfile, header= 'friend1Id friend2ID', index = False)
+  something.to_csv(myfile, header= None, index = False)
 
 #read input file
-fin = open("yelp-network.txt", "rt")
+f = open("yelp-network.txt", "r")
 #read file contents to string
-data1 = fin.read()
+data1 = f.read()
 #replace all occurrences of the required string
+data1 = data1.replace(' ', '')
 data1 = data1.replace(',', ' ')
 #close the input file
-fin.close()
+f.close()
 #open the input file in write mode
-fin = open("yelp-network.txt", "wt")
+f = open("yelp-network.txt", "wt")
 #overrite the input file with the resulting data
-fin.write(data1)
+f.write(data1)
 #close the file
-fin.close()
+f.close()
