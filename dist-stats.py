@@ -17,10 +17,11 @@ def printResults(rest):
 # reading the contents of the file
 data = pandas.read_csv(targetFile)
 
-# getting the ones that have the cityName that was entered in the terminal
-data = data[data['city'].str.contains(cityName, na=False)]
 # looking through the categories and getting the ones that contain "Restaurant"
 data = data[data['categories'].str.contains('Restaurant')] 
+
+# getting the ones that have the cityName that was entered in the terminal
+data = data[data['city'].str.contains(cityName, na=False)]
 
 # Splitting the category by the ; and putting in a list. Getting the city and stacking
 restaurant = pandas.DataFrame(data.categories.str.split(';').tolist(), index=data.city).stack()
@@ -31,7 +32,7 @@ restaurant = restaurant.reset_index([0, 'city'])
 # this is to change the column names.
 restaurant.columns = ['restaurant','category']
 
-# Gets rid of theses categories. Because these aren't the categories we want to show. We want to show the different kinds of food categories
+# remove thses categories because these aren't the categories we want to show. We want to show the different kinds of food categories
 restaurant = restaurant.loc[~restaurant['category'].str.contains('Restaurant|Seafood|Food|Bars|Nightlife')]
 
 # getting the number of categories
@@ -58,7 +59,7 @@ restaurant = data.merge(restaurant)
 
 restaurant.rename(columns={restaurant.columns[-1]: 'category'}, inplace = True)
 
-# aggregage
+# aggregate
 restaurant = restaurant.groupby('category', as_index=False).agg(
 {
 'categories':'count',
@@ -75,7 +76,7 @@ restaurant = restaurant[['category', 'reviews', 'averageStars']]
 # sorting by most reviews to least
 restaurantCategoryDist = restaurant.sort_values('reviews', ascending=False)
 
-# Gets rid of theses categories
+# remove theses categories
 restaurant = restaurant.loc[~restaurant['category'].str.contains('Restaurants|Seafood|Food|Bars|Nightlife')]
 
 # print
