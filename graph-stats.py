@@ -4,17 +4,17 @@ import pandas
 # input from the command line
 targetFile = sys.argv[1]
 
-# uses a space as the seperator (so seperates into columns based on the spaces) and no header
+# uses a space as the seperator (so seperates into columns based on the spaces)
 data = pandas.read_csv(targetFile, sep = " ")
 
 # setting the column names
 data.columns = ['firstNode', 'secondNode']
 
-# setting variable for the first node
-first = data.firstNode
-
 # getting the nodes and stacking them
 nodes = data.stack()
+
+# setting variable for the first node
+first = data.firstNode
 
 # drops the duplicate nodes
 noDup = nodes.drop_duplicates()
