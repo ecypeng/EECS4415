@@ -20,8 +20,8 @@ friendPairing.columns = ['friend1ID', 'friend2ID']
 # checking for duplicates + reverse duplicates
 noDuplicates = pandas.DataFrame(numpy.sort(friendPairing.values, axis = 1), columns = friendPairing.columns).drop_duplicates()
 
-with open('yelp-network.txt', 'w') as myfile:
-  noDuplicates.to_csv(myfile, header= None, index = False)
+with open('yelp-network.txt', 'w'):
+  noDuplicates.to_csv('yelp-network.txt', index = False, header= None)
 
 # reading the contents of yelp-network.txt
 f = open("yelp-network.txt", "r")
