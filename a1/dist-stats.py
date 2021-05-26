@@ -1,96 +1,85 @@
 import sys
 import pandas
+import csv
+import matplotlib.pyplot as plt; plt.rcdefaults()
+import numpy as np
 import matplotlib.pyplot as plt
 
-# getting input from the command line
+# store command line arguements as variables
 targetFile = sys.argv[1]
 cityName = sys.argv[2]
+categoryFrequency = {}
+reviews = {}
+starsTotal = {}
+starsCount = {}
+reviewStats = {}
+genericRestaurantCategories = ['Restaurants', 'Seafood', 'Food', 'Bars', 'Nightlife']
+# https://www.programiz.com/python-programming/reading-csv-files
+with open(targetFile, 'r') as file:
+    reader = csv.reader(file)
+    for row in reader:
+        businessCategories = []
+        if row[4] == cityName and 'Restaurant' in row[12]:
+            businessCategories = str(row[12]).split(';')
+            for cat in range(len(businessCategories)):
+                if businessCategories[cat] not in genericRestaurantCategories:
+                    if businessCategories[cat] not in categoryFrequency.keys():
+                        categoryFrequency[businessCategories[cat]] = 1
+                    else:
+                            categoryFrequency[businessCategories[cat]] += 1
+                    if businessCategories[cat] not in reviews.keys():
+                        reviews[businessCategories[cat]] = int(row[10])
+                    else:
+                        reviews[businessCategories[cat]] += int(row[10])
+                    if businessCategories[cat] not in starsTotal.keys():
+                        starsTotal[businessCategories[cat]] = float(row[9])
+                    else:
+                        starsTotal[businessCategories[cat]] += float(row[9])
+                    if businessCategories[cat] not in starsCount.keys():
+                        starsCount[businessCategories[cat]] = 1
+                    else:
+                        starsCount[businessCategories[cat]] += 1
 
-def printResults(rest):
-    # applying to be a str
-    rest = rest.applymap(str)
-    # so that in the terminal output they are all close together. so 1:2 instead of 1 : 2
-    rest = rest.apply(lambda x: ':'.join(x), axis=1)
-    # printing it and not showing the index
-    print(rest.to_string(index=False))
+# sorting dict by value descending to match requirements
+# source: https://thispointer.com/sort-a-dictionary-by-value-in-python-in-descending-ascending-order/#:~:text=sorted%20by%20value.-,Sort%20the%20dictionary%20by%20value%20in%20descending%20order%20using%20itemgetter,but%20in%20descending%20order%20i.e.
+sortedCategoryFrequency = dict( sorted(categoryFrequency.items(),
+                           key=lambda item: item[1],
+                           reverse=True))
 
-# reading the contents of the file
-data = pandas.read_csv(targetFile)
+sortedReviews = dict( sorted(reviews.items(),
+                           key=lambda item: item[1],
+                           reverse=True))
 
-# looking through the categories and getting the ones that contain "Restaurant"
-data = data[data['categories'].str.contains('Restaurant')] 
+# #print all keys and values
+for i, j in sortedCategoryFrequency.items():
+    print (i + ":" + str(j))
 
-# getting the ones that have the cityName that was entered in the terminal
-data = data[data['city'].str.contains(cityName, na=False)]
+for name, reviews in reviews.items():
+    reviewStats[name] = str(name) + ":" + str(sortedReviews.get(name)) + ":" + str(starsTotal.get(name)/starsCount.get(name))
 
-# Splitting the category by the ; and putting in a list. Getting the city and stacking
-restaurant = pandas.DataFrame(data.categories.str.split(';').tolist(), index=data.city).stack()
+sortedReviewStats = dict( sorted(reviewStats.items(),
+                           key=lambda item: item[1],
+                           ))
 
-# have to reset the index each time
-restaurant = restaurant.reset_index([0, 'city'])
+for i, j in sortedReviewStats.items():
+    print (str(j))
 
-# this is to change the column names.
-restaurant.columns = ['restaurant','category']
+sortedCategoryFrequencyValues = []
+#getting values for graph
+for i, j in sortedCategoryFrequency.items():
+    sortedCategoryFrequencyValues.append(j)
+sortedCategoryFrequencyValues = sortedCategoryFrequencyValues[:10]
 
-# remove thses categories because these aren't the categories we want to show. We want to show the different kinds of food categories
-restaurant = restaurant.loc[~restaurant['category'].str.contains('Restaurant|Seafood|Food|Bars|Nightlife')]
+# https://pythonspot.com/matplotlib-bar-chart/
+objects = (list(sortedCategoryFrequency)[0], list(sortedCategoryFrequency)[1], list(sortedCategoryFrequency)[2],  list(sortedCategoryFrequency)[3], list(sortedCategoryFrequency)[4], list(sortedCategoryFrequency)[5], 
+list(sortedCategoryFrequency)[6], list(sortedCategoryFrequency)[7], list(sortedCategoryFrequency)[8], list(sortedCategoryFrequency)[9])
+y_pos = np.arange(len(objects))
+performance = sortedCategoryFrequencyValues
 
-# getting the number of categories
-numRestaurantCategories = restaurant.groupby('category', as_index=False).count()
+plt.bar(y_pos, performance, align='center', alpha=0.5)
+plt.xticks(y_pos, objects)
+plt.xlabel('category')
+plt.ylabel('#restaurants')
+plt.title('frequency distribution of the number of restaurants in each category of restaurants')
 
-# getting the values and setting them to be descending
-restaurantCategoryDist = numRestaurantCategories.sort_values('restaurant',ascending=False)
-
-# printing the categories
-printResults(restaurantCategoryDist)
-
-# gets the count of categories and sorts them by their values from most to least
-categoriesCount = restaurant.groupby('category').count()
-restaurantBarSize = categoriesCount.sort_values('restaurant',ascending=False)
-
-# Splitting the category by the ; and putting in a list. Getting the city and stacking
-restaurant = pandas.DataFrame(data.categories.str.split(';').tolist(), index=data.business_id).stack()
-
-# have to reset the index each time
-restaurant = restaurant.reset_index([0, 'business_id'])
-
-# merge the restaurant data
-restaurant = data.merge(restaurant)
-
-restaurant.rename(columns={restaurant.columns[-1]: 'category'}, inplace = True)
-
-# aggregate
-restaurant = restaurant.groupby('category', as_index=False).agg(
-{
-'categories':'count',
-'review_count':sum,
-'stars':'mean'
-})
-
-# setting the columns
-restaurant.columns = ['category', 'restaurant', 'reviews', 'averageStars']
-
-# to only print these three
-restaurant = restaurant[['category', 'reviews', 'averageStars']]
-
-# sorting by most reviews to least
-restaurantCategoryDist = restaurant.sort_values('reviews', ascending=False)
-
-# remove theses categories
-restaurant = restaurant.loc[~restaurant['category'].str.contains('Restaurants|Seafood|Food|Bars|Nightlife')]
-
-# print
-printResults(restaurantCategoryDist)
-
-
-# so that it shows the top 10
-numBarsOnGraph = restaurantBarSize[:10]
-
-# below is to plot the bar graph
-axis = numBarsOnGraph[['restaurant']].plot(kind='bar', title='frequency distribution of the number of restaurants in each category of restaurants', legend=True, fontsize=10)
-axis.set_xlabel('category', fontsize=12)
-axis.set_ylabel('#restaurants', fontsize=12)
-# Makes the whole bar graph show. Without this it's too zoomed in and can't see all the lables
-plt.tight_layout()
-# actually show the graph
 plt.show()
