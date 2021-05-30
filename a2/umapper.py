@@ -1,17 +1,16 @@
+import sys
 import re
 import csv
 
 outputFile = open('unigrams.txt', 'w')
-allWords = []
+
 with open('yelp_tip.csv', 'r') as file:
     reader = csv.reader(file)
-    for row in reader:jjjj
+    for row in reader:
+        print(row[0])
         line = re.sub(r'\W+|\W+$', '', row[0])
         words = re.split(r'\W+', row[0])
-        for word in words:
-            allWords.append(word.lower())
-    
-allWords.sort()    
-for i in range(len(allWords)):
-    outputFile.write(allWords[i] + "\t1\n")
 
+        for word in words:
+            word = word.lower()
+            outputFile.write(word + "\t1" + "\n")
