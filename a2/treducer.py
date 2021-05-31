@@ -3,7 +3,7 @@
 previous = None
 sum = 0
 
-file = open('unigrams.txt', 'r')
+file = open('bigrams.txt', 'r')
 
 for line in file:
     key, value = line.split('\t')

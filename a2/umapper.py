@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import re
 import csv
 
@@ -14,4 +16,3 @@ with open('yelp_tip.csv', 'r') as file:
 allWords.sort()    
 for i in range(len(allWords)):
     outputFile.write(allWords[i] + "\t1\n")
-

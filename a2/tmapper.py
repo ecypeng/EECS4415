@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import re
 import csv
 
@@ -15,4 +17,3 @@ with open('yelp_tip.csv', 'r') as file:
         for triple in ngrams:
             line = ' '.join(triple).lower()
             outputFile.write(line + '\t1' + '\n')
-
