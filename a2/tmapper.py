@@ -1,19 +1,16 @@
 #!/usr/bin/python
 
+import sys
 import re
 import csv
 
-outputFile = open('trigrams.txt', 'w')
+reader = csv.reader(sys.stdin)
+for row in reader:
+    line = re.sub(r'^\W+|\W+$', '', row[0])
+    words = re.split(r'\W+', line)
 
-with open('yelp_tip.csv', 'r') as file:
-    reader = csv.reader(file)
-    for row in reader:
-        print(row[0])
-        line = re.sub(r'\W+|\W+$', '', row[0])
-        words = re.split(r'\W+', row[0])
+    ngrams = zip(*[words[i:] for i in range(3)])
 
-        ngrams = zip(*[words[i:] for i in range(3)])
-
-        for triple in ngrams:
-            line = ' '.join(triple).lower()
-            outputFile.write(line + '\t1' + '\n')
+    for triple in ngrams:
+        word = ' '.join(triple).lower()
+        print(word + '\t1')

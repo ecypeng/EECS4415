@@ -1,16 +1,15 @@
 #!/usr/bin/python
 
 import sys
-import re
+import csv
 
-outputFile = open('checkinbyday.txt', 'w')
-firstLine = True
-for inputLine in sys.stdin:
-    line = inputLine.split(',')
-    businessId = line[0]
-    weekDay = line[1]
-    numCheckIns = line[3]
-    if firstLine:
-        firstLine = False
-    else:
-        outputFile.write(businessId + ", " + weekDay + ", " + numCheckIns)
+count = 0
+
+reader = csv.reader(sys.stdin)
+for row in reader:
+    if count == 1:
+        businessId = row[0]
+        dayOfWeek = row[1]
+        checkins = row[3]
+        print(businessId + ', ' + dayOfWeek + '\t' + checkins)
+    count = 1
