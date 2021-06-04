@@ -1,11 +1,11 @@
 #!/usr/bin/python
 
+import sys
+
 previous = None
 sum = 0
 
-file = open('bigrams.txt', 'r')
-
-for line in file:
+for line in sys.stdin:
     key, value = line.split('\t')
 
     if key != previous:
