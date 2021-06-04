@@ -12,7 +12,7 @@ for inputLine in sys.stdin:
         allBusinesses = line[-1]
         businesses = allBusinesses.split(";")
         for i in range(len(businesses)):
-            outputFile.write(str.rstrip(businesses[i]) + '\t' + str(businessId) + '\n')
+            print(str.rstrip(businesses[i]) + '\t' + str(businessId) + '\n')
 
 
     else:
