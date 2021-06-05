@@ -9,19 +9,14 @@ import csv
 
 reader = csv.reader(sys.stdin)
 for row in reader:
+    # using REGEX to isolate for each individual line, then each word
     line = re.sub(r'^\W+|\W+$', '', row[0])
     words = re.split(r'\W+', line)
 
-    # for word in words:
-    #     word = word.lower()
-
-    # ngram = zip(*[words[i:] for i in range(2)])
-
+    # zip the words to create ngrams
     ngrams = zip(*[words[i:] for i in range(2)])
 
-    tuple = [" ".join(ngram).lower() for ngram in ngrams]
-    # [outputFile.write(''.join(t) + '\t1' + '\n') for t in tuple]
-
+    # join back the tuple and lower any uppercases
     for tuple in ngrams:
         line = ' '.join(tuple).lower()
         print(line + '\t1')
