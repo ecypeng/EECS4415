@@ -1,0 +1,9 @@
+how would you modify these scripts in order to compute the frequency of each of the quantities
+(instead of the number of occurrences)?
+
+Currently to calculate the number of occurences, we are adding each time the n-gram occurs. In order to change this to 
+be calculating frequency instead, we would need to keep track of the time passed between each occurence. After doing this, 
+we would add up all of the times between each occurence and divide it by the number of occurence to get the average frequency. 
+To do this, we would have a variable to keep track of how much time has passed. Each time an occurence of that specific value 
+occures, we would add that time to an array and reset the variable to 0. By the end of it, we would have all the times it took for 
+each occurence, and then can use these values to find the average frequency.    
