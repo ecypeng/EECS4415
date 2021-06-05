@@ -3,7 +3,6 @@
 import sys
 import re
 
-outputFile = open('inverted-index.txt', 'w')
 firstLine = True
 for inputLine in sys.stdin:
     if not firstLine:
@@ -12,8 +11,6 @@ for inputLine in sys.stdin:
         allBusinesses = line[-1]
         businesses = allBusinesses.split(";")
         for i in range(len(businesses)):
-            print(str.rstrip(businesses[i]) + '\t' + str(businessId) + '\n')
-
-
+            print(str.rstrip(businesses[i]) + '\t' + str(businessId))
     else:
         firstLine = False
