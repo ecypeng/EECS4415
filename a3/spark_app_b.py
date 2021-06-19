@@ -20,13 +20,19 @@
     Original author: Hanee' Medhat
 
 """
+#!/usr/bin/python
+# coding=utf-8
 
 from pyspark import SparkConf,SparkContext
 from pyspark.streaming import StreamingContext
 from pyspark.sql import Row,SQLContext
 import sys
-import requests
+import nltk
+from nltk.sentiment import SentimentIntensityAnalyzer
 
+nltk.download() # IDK WHAT TO DOWNLOAD YET
+
+sia = SentimentIntensityAnalyzer()
 
 # create spark configuration
 conf = SparkConf()
@@ -55,8 +61,30 @@ dataStream = ssc.socketTextStream("twitter",9009)
 # split each tweet into words
 words = dataStream.flatMap(lambda line: line.split(" "))
 
+topics = ['#LiberalParty', '#ConservativeParty', '#BlocQuebecois', '#NewDemocraticParty', '#GreenPartyofCanada']
+liberal = ['#AlexanderMackenzie', '#WilfridLaurier', 'WilliamLyonMackenzieKing', '#LouisStLaurent', '#LesterPearson', '#PierreTrudeau', '#JohnTurner', '#JeanChretien', '#PaulMartin', '#JustinTrudeau']
+conservative = ['#JohnAMacdonald', '#MackenzieBowell', '#CharlesTupper', '#RobertBorden', '#ArthurMeighen', '#Bennett', '#StephenHarper', '#JohnAbbott', '#ArthurMeighen', '#RobertManion']
+bloc = ['#LucienBouchard', '#GillesDuceppe', '#MichelGauthier', '#VivianBarbot', '#DanielPaille', '#MarioBeaulieu', '#MartineOuellet', '#Yves-FrancoisBlanchet', '#RhealFortin', '#LucDesilets']
+democratic = ['#TommyDouglas', '#DavidLewis', '#EdBroadbent', '#AudreyMcLaughlin', '#AlexaMcDonough', '#JackLayton', '#NycoleTurmel', '#TomMulcair', '#JagmeetSingh', '#RebeccaBlaikie']
+green = ['#TrevorHancock', '#SeymourTrieger', '#KathrynCholette', '#ChrisLea', '#WendyPriesnitz', '#JoanRussow', '#JimHarris', '#ElizabethMay', '#AnnamiePaul', '#ChrisBradshaw']
+
+political_hashtags = liberal + conservative + bloc + democratic + green
+
+
 # filter the words to get only hashtags
-hashtags = words.filter(lambda w: w in ['#ford', '#jeep', '#toyota', '#nissan', '#honda'])
+hashtags = words.filter(lambda w: w in political_hashtags)
+
+tokenized_hashtags = nltk.word_tokenize(hashtags)
+
+score = sia.polarity_score(tokenized_hashtags)
+
+if (score > 0):
+    print("positive")
+elif (score < 0):
+    print("negative")
+else:
+    print("neutral")
+
 
 # map each hashtag to be a pair of (hashtag,1)
 hashtag_counts = hashtags.map(lambda x: (x, 1))
@@ -86,6 +114,8 @@ def process_interval(time, rdd):
 
 # do this for every single interval
 hashtag_totals.foreachRDD(process_interval)
+
+
 
 # start the streaming computation
 ssc.start()
