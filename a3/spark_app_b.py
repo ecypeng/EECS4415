@@ -30,9 +30,9 @@ import sys
 import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
 
-nltk.download() # IDK WHAT TO DOWNLOAD YET
+nltk.download('vader_lexicon')
 
-sia = SentimentIntensityAnalyzer()
+# sia = SentimentIntensityAnalyzer()
 
 # create spark configuration
 conf = SparkConf()
@@ -74,16 +74,25 @@ political_hashtags = liberal + conservative + bloc + democratic + green
 # filter the words to get only hashtags
 hashtags = words.filter(lambda w: w in political_hashtags)
 
-tokenized_hashtags = nltk.word_tokenize(hashtags)
+# tokenized_hashtags = nltk.word_tokenize(hashtags)
 
-score = sia.polarity_score(tokenized_hashtags)
+# score = sia.polarity_score(hashtags)
 
-if (score > 0):
-    print("positive")
-elif (score < 0):
-    print("negative")
-else:
-    print("neutral")
+# if (score > 0):
+#     print("positive")
+# elif (score < 0):
+#     print("negative")
+# else:
+#     print("neutral")
+
+# if(sia.polarity_scores(hashtags)['compound'] < 0):
+#     print("Its negative")
+# # If positive return +1
+# elif(sia.polarity_scores(hashtags)['compound'] > 0):
+#     print("Its positive")
+# # If neutral return 0
+# elif(sia.polarity_scores(hashtags)['compound'] == 0):
+#     print("Its neutral")
 
 
 # map each hashtag to be a pair of (hashtag,1)
