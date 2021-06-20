@@ -105,8 +105,7 @@ stream = Stream(auth, listener)
 
 # setup search terms
 track = ['#Ford', '#Jeep', '#Toyota', '#nissan', '#honda']
-language = ['en'] # MIGHT DELETE LANGUAGE TOO. SEE AFTER RUNNING
-# locations = [-130,-20,100,50] # Put this back because without it it took way too long
+language = ['en']
 
 # get filtered tweets, forward them to spark until interrupted
 try:

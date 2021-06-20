@@ -26,7 +26,6 @@
 import re
 from pyspark import SparkConf,SparkContext
 from pyspark.streaming import StreamingContext
-from pyspark.sql import Row,SQLContext
 import sys
 import nltk
 nltk.download('vader_lexicon')
@@ -79,28 +78,20 @@ def clean_input(tweet):
     return clean
 
 def tag_filter(line):
-    res = False
+    containsHashtag = False
     for word in line.split(" "):
         for hashtag in sport_hashtags:
             if word.lower() in hashtag:
-                res = True
-    return(res)
+                containsHashtag = True
+    return(containsHashtag)
 
 hashtags = dataStream.filter(tag_filter)
 
 def find_topic(input):
-    # input = hashtags.filter(lambda w: w in sport_hashtags)
-    # input = tag_filter(input)
     return_topic = ""
     input_clean = clean_input(input)
     full_tweet = input_clean.split(" ")
     for word in full_tweet:
-        # val = 0
-        # for value in sport_hashtags:
-        #     if value == word:
-        #         return_topic = value[val]
-        #         val = val + 1
-        # print(word)
         if word in basketball:
             return_topic = topics[0]
         if word in baseball:
@@ -111,8 +102,6 @@ def find_topic(input):
             return_topic = topics[3]
         if word in tennis:
             return_topic = topics[4]
-        # else:
-        #     return_topic = topics[4]
     return return_topic
 
 
@@ -122,25 +111,15 @@ def sentiment(tweet):
     sent = ''
     if (find_topic(tweet) != ""):
         if polarity['compound'] < 0:
-            # print('negative')
             sent = 'negative'
         elif polarity['compound'] > 0:
-            # print('positive')
             sent = 'positive'
         else:
-            # print('neutral')
             sent = 'neutral'
     return sent
 
-def count(tweet):
-    if (sentiment(tweet) != ''):
-        return 1
-    return 0
-
 # map each hashtag to be a pair of (hashtag,1)
 hashtag_counts = hashtags.map(lambda x: (find_topic(x) + " " + sentiment(x), 1 if sentiment(x) != '' else 0))
-# print(hashtags)
-# tweet_sentiment = words.map(lambda x: (sentiment(x), 1))
 
 # adding the count of each hashtag to its last count
 def aggregate_tags_count(new_values, total_sum):
@@ -161,8 +140,6 @@ def process_interval(time, rdd):
         # print it nicely
         for tag in top10:
             print('{:<40} {}'.format(tag[0], tag[1]))
-            # print(tweet_sentiment)
-            # graph_info.write('{:<40} {}\n'.format(find_topic(tag[0]), sentiment(words) ))
             graph_info.write('{:<40} {}\n'.format(tag[0], tag[1])) 
     except:
         e = sys.exc_info()[0]
@@ -170,9 +147,6 @@ def process_interval(time, rdd):
 
 # do this for every single interval
 hashtag_totals.foreachRDD(process_interval)
-# tweet_sentiment.foreachRDD(process_interval)
-
-
 
 # start the streaming computation
 ssc.start()

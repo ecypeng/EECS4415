@@ -112,7 +112,6 @@ tennis = ['#williams', '#racket', '#grandslam', '#ntl', '#rosewall', '#tenniscou
 sport_hashtags = basketball + baseball + soccer + football + tennis
 
 language = ['en']
-# locations = [-130,-20,100,50] 
 
 # get filtered tweets, forward them to spark until interrupted
 try:

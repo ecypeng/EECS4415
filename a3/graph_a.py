@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-# from matplotlib import style
 
 fig = plt.figure()
 ax1 = fig.add_subplot(1,1,1)
@@ -31,8 +30,6 @@ def animate(i):
     for line in lines:
         if len(line) > 1:
             hashtag, count = line.split()
-            print(hashtag)
-            print(count)
             hashtagCount[hashtag] += int(count)
     print(hashtagCount)
 
