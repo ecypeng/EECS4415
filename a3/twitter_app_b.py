@@ -103,21 +103,30 @@ auth.set_access_token(access_token, access_token_secret)
 stream = Stream(auth, listener)
 
 # setup search terms
-topics = ['#LiberalParty', '#ConservativeParty', '#BlocQuébécois', '#NewDemocraticParty', '#GreenPartyofCanada']
-liberal = ['#AlexanderMackenzie', '#WilfridLaurier', 'WilliamLyonMackenzieKing', '#LouisStLaurent', '#LesterPearson', '#PierreTrudeau', '#JohnTurner', '#JeanChrétien', '#PaulMartin', '#JustinTrudeau']
-conservative = ['#JohnAMacdonald', '#MackenzieBowell', '#CharlesTupper', '#RobertBorden', '#ArthurMeighen', '#Bennett', '#StephenHarper', '#JohnAbbott', '#ArthurMeighen', '#RobertManion']
-bloc = ['#LucienBouchard', '#GillesDuceppe', '#MichelGauthier', '#VivianBarbot', '#DanielPaillé', '#MarioBeaulieu', '#MartineOuellet', '#Yves-FrançoisBlanchet', '#RhéalFortin', '#LucDesilets']
-democratic = ['#TommyDouglas', '#DavidLewis', '#EdBroadbent', '#AudreyMcLaughlin', '#AlexaMcDonough', '#JackLayton', '#NycoleTurmel', '#TomMulcair', '#JagmeetSingh', '#RebeccaBlaikie']
-green = ['#TrevorHancock', '#SeymourTrieger', '#KathrynCholette', '#ChrisLea', '#WendyPriesnitz', '#JoanRussow', '#JimHarris', '#ElizabethMay', '#AnnamiePaul', '#ChrisBradshaw']
+# topics = ['#LiberalParty', '#ConservativeParty', '#BlocQuébécois', '#NewDemocraticParty', '#GreenPartyofCanada']
+# liberal = ['#AlexanderMackenzie', '#WilfridLaurier', 'WilliamLyonMackenzieKing', '#LouisStLaurent', '#LesterPearson', '#PierreTrudeau', '#JohnTurner', '#JeanChrétien', '#PaulMartin', '#JustinTrudeau']
+# conservative = ['#JohnAMacdonald', '#MackenzieBowell', '#CharlesTupper', '#RobertBorden', '#ArthurMeighen', '#Bennett', '#StephenHarper', '#JohnAbbott', '#ArthurMeighen', '#RobertManion']
+# bloc = ['#LucienBouchard', '#GillesDuceppe', '#MichelGauthier', '#VivianBarbot', '#DanielPaillé', '#MarioBeaulieu', '#MartineOuellet', '#Yves-FrançoisBlanchet', '#RhéalFortin', '#LucDesilets']
+# democratic = ['#TommyDouglas', '#DavidLewis', '#EdBroadbent', '#AudreyMcLaughlin', '#AlexaMcDonough', '#JackLayton', '#NycoleTurmel', '#TomMulcair', '#JagmeetSingh', '#RebeccaBlaikie']
+# green = ['#TrevorHancock', '#SeymourTrieger', '#KathrynCholette', '#ChrisLea', '#WendyPriesnitz', '#JoanRussow', '#JimHarris', '#ElizabethMay', '#AnnamiePaul', '#ChrisBradshaw']
 
-political_hashtags = liberal + conservative + bloc + democratic + green
+# political_hashtags = liberal + conservative + bloc + democratic + green
+
+topics = ['#basketball', '#baseball', '#soccer', '#football', '#tennis']
+basketball = ['#dribble', '#jordan', 'NBA', '#pistons', '#raptors', '#LakersNation', '#shaq', '#BrooklynNets', '#wade', '#lebron']
+baseball = ['#homebase', '#homerun', '#doubleplay', '#stolenbase', '#flyout', '#pitcher', '#batter', '#MLB', '#kershaw', '#ruth']
+soccer = ['#goalkeeper', '#midfielder', '#ronaldo', '#liverpool', '#salah', '#mls', '#MartineOuellet', '#Yves-FrancoisBlanchet', '#RhealFortin', '#LucDesilets']
+football = ['#touchdown', '#NFL', '#DetroitLions', '#ChicagoBears', '#NewYorkGiants', '#JackLayton', '#NycoleTurmel', '#TomMulcair', '#JagmeetSingh', '#RebeccaBlaikie']
+tennis = ['#williams', '#SeymourTrieger', '#KathrynCholette', '#ChrisLea', '#WendyPriesnitz', '#JoanRussow', '#JimHarris', '#ElizabethMay', '#AnnamiePaul', '#ChrisBradshaw']
+
+sport_hashtags = basketball + baseball + soccer + football + tennis
 
 language = ['en']
 # locations = [-130,-20,100,50] 
 
 # get filtered tweets, forward them to spark until interrupted
 try:
-    stream.filter(track=political_hashtags, languages=language)
+    stream.filter(track=sport_hashtags, languages=language)
 except KeyboardInterrupt:
     s.shutdown(socket.SHUT_RD)
 

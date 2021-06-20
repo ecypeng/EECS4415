@@ -23,16 +23,17 @@
 #!/usr/bin/python
 # coding=utf-8
 
+import re
 from pyspark import SparkConf,SparkContext
 from pyspark.streaming import StreamingContext
 from pyspark.sql import Row,SQLContext
 import sys
 import nltk
+nltk.download('vader_lexicon')
 from nltk.sentiment import SentimentIntensityAnalyzer
 
-nltk.download('vader_lexicon')
+sia = SentimentIntensityAnalyzer()
 
-# sia = SentimentIntensityAnalyzer()
 
 # create spark configuration
 conf = SparkConf()
@@ -61,18 +62,26 @@ dataStream = ssc.socketTextStream("twitter",9009)
 # split each tweet into words
 words = dataStream.flatMap(lambda line: line.split(" "))
 
-topics = ['#LiberalParty', '#ConservativeParty', '#BlocQuebecois', '#NewDemocraticParty', '#GreenPartyofCanada']
-liberal = ['#AlexanderMackenzie', '#WilfridLaurier', 'WilliamLyonMackenzieKing', '#LouisStLaurent', '#LesterPearson', '#PierreTrudeau', '#JohnTurner', '#JeanChretien', '#PaulMartin', '#JustinTrudeau']
-conservative = ['#JohnAMacdonald', '#MackenzieBowell', '#CharlesTupper', '#RobertBorden', '#ArthurMeighen', '#Bennett', '#StephenHarper', '#JohnAbbott', '#ArthurMeighen', '#RobertManion']
-bloc = ['#LucienBouchard', '#GillesDuceppe', '#MichelGauthier', '#VivianBarbot', '#DanielPaille', '#MarioBeaulieu', '#MartineOuellet', '#Yves-FrancoisBlanchet', '#RhealFortin', '#LucDesilets']
-democratic = ['#TommyDouglas', '#DavidLewis', '#EdBroadbent', '#AudreyMcLaughlin', '#AlexaMcDonough', '#JackLayton', '#NycoleTurmel', '#TomMulcair', '#JagmeetSingh', '#RebeccaBlaikie']
-green = ['#TrevorHancock', '#SeymourTrieger', '#KathrynCholette', '#ChrisLea', '#WendyPriesnitz', '#JoanRussow', '#JimHarris', '#ElizabethMay', '#AnnamiePaul', '#ChrisBradshaw']
+# topics = ['#LiberalParty', '#ConservativeParty', '#BlocQuebecois', '#NewDemocraticParty', '#GreenPartyofCanada']
+# liberal = ['#AlexanderMackenzie', '#WilfridLaurier', 'WilliamLyonMackenzieKing', '#LouisStLaurent', '#LesterPearson', '#PierreTrudeau', '#JohnTurner', '#JeanChretien', '#PaulMartin', '#JustinTrudeau']
+# conservative = ['#JohnAMacdonald', '#MackenzieBowell', '#CharlesTupper', '#RobertBorden', '#ArthurMeighen', '#Bennett', '#StephenHarper', '#JohnAbbott', '#ArthurMeighen', '#RobertManion']
+# bloc = ['#LucienBouchard', '#GillesDuceppe', '#MichelGauthier', '#VivianBarbot', '#DanielPaille', '#MarioBeaulieu', '#MartineOuellet', '#Yves-FrancoisBlanchet', '#RhealFortin', '#LucDesilets']
+# democratic = ['#TommyDouglas', '#DavidLewis', '#EdBroadbent', '#AudreyMcLaughlin', '#AlexaMcDonough', '#JackLayton', '#NycoleTurmel', '#TomMulcair', '#JagmeetSingh', '#RebeccaBlaikie']
+# green = ['#TrevorHancock', '#SeymourTrieger', '#KathrynCholette', '#ChrisLea', '#WendyPriesnitz', '#JoanRussow', '#JimHarris', '#ElizabethMay', '#AnnamiePaul', '#ChrisBradshaw']
 
-political_hashtags = liberal + conservative + bloc + democratic + green
+# political_hashtags = liberal + conservative + bloc + democratic + green
 
+topics = ['#basketball', '#baseball', '#soccer', '#football', '#tennis']
+basketball = ['#dribble', '#jordan', '#NBA', '#pistons', '#raptors', '#LakersNation', '#shaq', '#BrooklynNets', '#wade', '#lebron']
+baseball = ['#homebase', '#homerun', '#doubleplay', '#stolenbase', '#flyout', '#pitcher', '#batter', '#MLB', '#kershaw', '#ruth']
+soccer = ['#goalkeeper', '#midfielder', '#ronaldo', '#liverpool', '#salah', '#mls', '#MartineOuellet', '#Yves-FrancoisBlanchet', '#RhealFortin', '#LucDesilets']
+football = ['#touchdown', '#NFL', '#DetroitLions', '#ChicagoBears', '#NewYorkGiants', '#JackLayton', '#NycoleTurmel', '#TomMulcair', '#JagmeetSingh', '#RebeccaBlaikie']
+tennis = ['#williams', '#SeymourTrieger', '#KathrynCholette', '#ChrisLea', '#WendyPriesnitz', '#JoanRussow', '#JimHarris', '#ElizabethMay', '#AnnamiePaul', '#ChrisBradshaw']
+
+sport_hashtags = basketball + baseball + soccer + football + tennis
 
 # filter the words to get only hashtags
-hashtags = words.filter(lambda w: w in political_hashtags)
+hashtags = words.filter(lambda w: w in sport_hashtags)
 
 # tokenized_hashtags = nltk.word_tokenize(hashtags)
 
@@ -94,9 +103,26 @@ hashtags = words.filter(lambda w: w in political_hashtags)
 # elif(sia.polarity_scores(hashtags)['compound'] == 0):
 #     print("Its neutral")
 
+def clean_input(tweet):
+    clean = re.sub(r'[\'\d]', '', tweet)
+    return clean
+
+def sentiment(tweet):
+    tweet = clean_input(tweet)
+    polarity = sia.polarity_scores(tweet)
+
+    if polarity['compound'] > 0:
+        print('negative')
+        return(1)
+    elif polarity['compound'] < 0:
+        print('positive')
+        return(-1)
+    else:
+        print('neutral')
+        return(0)
 
 # map each hashtag to be a pair of (hashtag,1)
-hashtag_counts = hashtags.map(lambda x: (x, 1))
+hashtag_counts = hashtags.map(lambda x: (sentiment(x), 1))
 
 # adding the count of each hashtag to its last count
 def aggregate_tags_count(new_values, total_sum):

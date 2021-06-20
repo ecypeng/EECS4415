@@ -80,14 +80,14 @@ class TweetListener(StreamListener):
 # ==== setup local connection ====
 
 # IP and port of local machine or Docker
-# TCP_IP = socket.gethostbyname(socket.gethostname()) # returns local IP
-TCP_IP = "localhost"
+TCP_IP = socket.gethostbyname(socket.gethostname()) # returns local IP
+# TCP_IP = "localhost"
 TCP_PORT = 9009
 
 # setup local connection, expose socket, listen for spark app
 conn = None
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s.bind((TCP_IP, TCP_PORT))
 s.listen(1)
 print("Waiting for TCP connection...")
