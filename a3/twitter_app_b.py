@@ -102,22 +102,12 @@ auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 stream = Stream(auth, listener)
 
-# setup search terms
-# topics = ['#LiberalParty', '#ConservativeParty', '#BlocQuébécois', '#NewDemocraticParty', '#GreenPartyofCanada']
-# liberal = ['#AlexanderMackenzie', '#WilfridLaurier', 'WilliamLyonMackenzieKing', '#LouisStLaurent', '#LesterPearson', '#PierreTrudeau', '#JohnTurner', '#JeanChrétien', '#PaulMartin', '#JustinTrudeau']
-# conservative = ['#JohnAMacdonald', '#MackenzieBowell', '#CharlesTupper', '#RobertBorden', '#ArthurMeighen', '#Bennett', '#StephenHarper', '#JohnAbbott', '#ArthurMeighen', '#RobertManion']
-# bloc = ['#LucienBouchard', '#GillesDuceppe', '#MichelGauthier', '#VivianBarbot', '#DanielPaillé', '#MarioBeaulieu', '#MartineOuellet', '#Yves-FrançoisBlanchet', '#RhéalFortin', '#LucDesilets']
-# democratic = ['#TommyDouglas', '#DavidLewis', '#EdBroadbent', '#AudreyMcLaughlin', '#AlexaMcDonough', '#JackLayton', '#NycoleTurmel', '#TomMulcair', '#JagmeetSingh', '#RebeccaBlaikie']
-# green = ['#TrevorHancock', '#SeymourTrieger', '#KathrynCholette', '#ChrisLea', '#WendyPriesnitz', '#JoanRussow', '#JimHarris', '#ElizabethMay', '#AnnamiePaul', '#ChrisBradshaw']
-
-# political_hashtags = liberal + conservative + bloc + democratic + green
-
 topics = ['#basketball', '#baseball', '#soccer', '#football', '#tennis']
-basketball = ['#dribble', '#jordan', 'NBA', '#pistons', '#raptors', '#LakersNation', '#shaq', '#BrooklynNets', '#wade', '#lebron']
-baseball = ['#homebase', '#homerun', '#doubleplay', '#stolenbase', '#flyout', '#pitcher', '#batter', '#MLB', '#kershaw', '#ruth']
-soccer = ['#goalkeeper', '#midfielder', '#ronaldo', '#liverpool', '#salah', '#mls', '#MartineOuellet', '#Yves-FrancoisBlanchet', '#RhealFortin', '#LucDesilets']
-football = ['#touchdown', '#NFL', '#DetroitLions', '#ChicagoBears', '#NewYorkGiants', '#JackLayton', '#NycoleTurmel', '#TomMulcair', '#JagmeetSingh', '#RebeccaBlaikie']
-tennis = ['#williams', '#SeymourTrieger', '#KathrynCholette', '#ChrisLea', '#WendyPriesnitz', '#JoanRussow', '#JimHarris', '#ElizabethMay', '#AnnamiePaul', '#ChrisBradshaw']
+basketball = ['#dribble', '#jordan', '#NBA', '#pistons', '#raptors', '#LakersNation', '#shaq', '#BrooklynNets', '#wade', '#lebron']
+baseball = ['#homebase', '#homerun', '#doubleplay', '#bluejays', '#flyout', '#pitcher', '#batter', '#MLB', '#kershaw', '#ruth']
+soccer = ['#goalkeeper', '#midfielder', '#ronaldo', '#liverpool', '#salah', '#MLS', '#messi', '#neymar', '#goal', '#goalie']
+football = ['#touchdown', '#NFL', '#DetroitLions', '#ChicagoBears', '#NewYorkGiants', '#receiver', '#kicker', '#defense', '#MinnesotaVikings', '#tombrady']
+tennis = ['#williams', '#racket', '#grandslam', '#NTL', '#rosewall', '#tenniscourt', '#tennisball', '#deuce', '#ace', '#let']
 
 sport_hashtags = basketball + baseball + soccer + football + tennis
 
