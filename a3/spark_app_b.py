@@ -63,63 +63,84 @@ dataStream = ssc.socketTextStream("twitter",9009)
 words = dataStream.flatMap(lambda line: line.split(" "))
 
 topics = ['#basketball', '#baseball', '#soccer', '#football', '#tennis']
-basketball = ['#dribble', '#jordan', '#NBA', '#pistons', '#raptors', '#LakersNation', '#shaq', '#BrooklynNets', '#wade', '#lebron']
-baseball = ['#homebase', '#homerun', '#doubleplay', '#bluejays', '#flyout', '#pitcher', '#batter', '#MLB', '#kershaw', '#ruth']
-soccer = ['#goalkeeper', '#midfielder', '#ronaldo', '#liverpool', '#salah', '#MLS', '#messi', '#neymar', '#goal', '#goalie']
-football = ['#touchdown', '#NFL', '#DetroitLions', '#ChicagoBears', '#NewYorkGiants', '#receiver', '#kicker', '#defense', '#MinnesotaVikings', '#tombrady']
-tennis = ['#williams', '#racket', '#grandslam', '#NTL', '#rosewall', '#tenniscourt', '#tennisball', '#deuce', '#ace', '#let']
+basketball = ['#dribble', '#jordan', '#nba', '#pistons', '#raptors', '#lakersnation', '#shaq', '#brooklynnets', '#wade', '#lebron']
+baseball = ['#homebase', '#homerun', '#doubleplay', '#bluejays', '#flyout', '#pitcher', '#batter', '#mlb', '#kershaw', '#ruth']
+soccer = ['#goalkeeper', '#midfielder', '#ronaldo', '#liverpool', '#salah', '#mls', '#messi', '#neymar', '#goal', '#goalie']
+football = ['#touchdown', '#nfl', '#detroitlions', '#chicagobears', '#newyorkgiants', '#receiver', '#kicker', '#defense', '#minnesotavikings', '#tombrady']
+tennis = ['#williams', '#racket', '#grandslam', '#ntl', '#rosewall', '#tenniscourt', '#tennisball', '#deuce', '#ace', '#let']
 
 sport_hashtags = basketball + baseball + soccer + football + tennis
 
 # filter the words to get only hashtags
-hashtags = words.filter(lambda w: w in sport_hashtags)
+# hashtags = words.filter(lambda w: w in sport_hashtags)
 
 def clean_input(tweet):
     clean = re.sub(r'[\'\d]', '', tweet)
     return clean
 
-# def tag_filter(line):
-#     res = False
-#     for word in line.split(" "):
-#         for hashtag in sport_hashtags:
-#             if word.lower() in hashtag:
-#                 res = True
-#     return(res)
+def tag_filter(line):
+    res = False
+    for word in line.split(" "):
+        for hashtag in sport_hashtags:
+            if word.lower() in hashtag:
+                res = True
+    return(res)
 
-# hashtags = dataStream.filter(tag_filter)
+hashtags = dataStream.filter(tag_filter)
 
 def find_topic(input):
-    input = clean_input(input)
-    for word in input.split(" "):
+    # input = hashtags.filter(lambda w: w in sport_hashtags)
+    # input = tag_filter(input)
+    return_topic = ""
+    input_clean = clean_input(input)
+    full_tweet = input_clean.split(" ")
+    for word in full_tweet:
+        # val = 0
+        # for value in sport_hashtags:
+        #     if value == word:
+        #         return_topic = value[val]
+        #         val = val + 1
+        # print(word)
         if word in basketball:
-            return topics[0]
+            return_topic = topics[0]
         if word in baseball:
-            return topics[1]
+            return_topic = topics[1]
         if word in soccer:
-            return topics[2]
+            return_topic = topics[2]
         if word in football:
-            return topics[3]
+            return_topic = topics[3]
         if word in tennis:
-            return topics[4]
+            return_topic = topics[4]
+        # else:
+        #     return_topic = topics[4]
+    return return_topic
+
 
 def sentiment(tweet):
     tweet = clean_input(tweet)
     polarity = sia.polarity_scores(tweet)
+    sent = ''
+    if (find_topic(tweet) != ""):
+        if polarity['compound'] < 0:
+            # print('negative')
+            sent = 'negative'
+        elif polarity['compound'] > 0:
+            # print('positive')
+            sent = 'positive'
+        else:
+            # print('neutral')
+            sent = 'neutral'
+    return sent
 
-    if polarity['compound'] < 0:
-        # print('negative')
-        return('negative')
-    elif polarity['compound'] > 0:
-        # print('positive')
-        return('positive')
-    else:
-        # print('neutral')
-        return('neutral')
+def count(tweet):
+    if (sentiment(tweet) != ''):
+        return 1
+    return 0
 
 # map each hashtag to be a pair of (hashtag,1)
-hashtag_counts = hashtags.map(lambda x: (x, 1))
-
-tweet_sentiment = words.map(lambda x: (sentiment(x), 1))
+hashtag_counts = hashtags.map(lambda x: (find_topic(x) + " " + sentiment(x), 1 if sentiment(x) != '' else 0))
+# print(hashtags)
+# tweet_sentiment = words.map(lambda x: (sentiment(x), 1))
 
 # adding the count of each hashtag to its last count
 def aggregate_tags_count(new_values, total_sum):
@@ -127,7 +148,7 @@ def aggregate_tags_count(new_values, total_sum):
 
 # do the aggregation, note that now this is a sequence of RDDs
 hashtag_totals = hashtag_counts.updateStateByKey(aggregate_tags_count)
-
+graph_info = open('graph_info_b.txt', 'a+')
 # process a single time interval
 def process_interval(time, rdd):
     # print a separator
@@ -140,6 +161,9 @@ def process_interval(time, rdd):
         # print it nicely
         for tag in top10:
             print('{:<40} {}'.format(tag[0], tag[1]))
+            # print(tweet_sentiment)
+            # graph_info.write('{:<40} {}\n'.format(find_topic(tag[0]), sentiment(words) ))
+            graph_info.write('{:<40} {}\n'.format(tag[0], tag[1])) 
     except:
         e = sys.exc_info()[0]
         print("Error: %s" % e)

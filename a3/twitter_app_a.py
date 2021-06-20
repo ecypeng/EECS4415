@@ -104,7 +104,7 @@ auth.set_access_token(access_token, access_token_secret)
 stream = Stream(auth, listener)
 
 # setup search terms
-track = ['#ford', '#jeep', '#toyota', '#nissan', '#honda']
+track = ['#Ford', '#Jeep', '#Toyota', '#nissan', '#honda']
 language = ['en'] # MIGHT DELETE LANGUAGE TOO. SEE AFTER RUNNING
 # locations = [-130,-20,100,50] # Put this back because without it it took way too long
 

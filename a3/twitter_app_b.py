@@ -103,11 +103,11 @@ auth.set_access_token(access_token, access_token_secret)
 stream = Stream(auth, listener)
 
 topics = ['#basketball', '#baseball', '#soccer', '#football', '#tennis']
-basketball = ['#dribble', '#jordan', '#NBA', '#pistons', '#raptors', '#LakersNation', '#shaq', '#BrooklynNets', '#wade', '#lebron']
-baseball = ['#homebase', '#homerun', '#doubleplay', '#bluejays', '#flyout', '#pitcher', '#batter', '#MLB', '#kershaw', '#ruth']
-soccer = ['#goalkeeper', '#midfielder', '#ronaldo', '#liverpool', '#salah', '#MLS', '#messi', '#neymar', '#goal', '#goalie']
-football = ['#touchdown', '#NFL', '#DetroitLions', '#ChicagoBears', '#NewYorkGiants', '#receiver', '#kicker', '#defense', '#MinnesotaVikings', '#tombrady']
-tennis = ['#williams', '#racket', '#grandslam', '#NTL', '#rosewall', '#tenniscourt', '#tennisball', '#deuce', '#ace', '#let']
+basketball = ['#dribble', '#jordan', '#nba', '#pistons', '#raptors', '#lakersnation', '#shaq', '#brooklynnets', '#wade', '#lebron']
+baseball = ['#homebase', '#homerun', '#doubleplay', '#bluejays', '#flyout', '#pitcher', '#batter', '#mlb', '#kershaw', '#ruth']
+soccer = ['#goalkeeper', '#midfielder', '#ronaldo', '#liverpool', '#salah', '#mls', '#messi', '#neymar', '#goal', '#goalie']
+football = ['#touchdown', '#nfl', '#detroitlions', '#chicagobears', '#newyorkgiants', '#receiver', '#kicker', '#defense', '#minnesotavikings', '#tombrady']
+tennis = ['#williams', '#racket', '#grandslam', '#ntl', '#rosewall', '#tenniscourt', '#tennisball', '#deuce', '#ace', '#let']
 
 sport_hashtags = basketball + baseball + soccer + football + tennis
 

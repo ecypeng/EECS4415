@@ -8,7 +8,7 @@ labels = []
 values = []
 
 
-# @app.route("/")
+@app.route("/")
 def chart():
     global labels,values
     labels = []
@@ -16,7 +16,7 @@ def chart():
     return render_template('chart.html', values=values, labels=labels)
 
 
-# @app.route('/refreshData')
+@app.route('/refreshData')
 def refresh_graph_data():
     global labels, values
     print("labels now: " + str(labels))
@@ -24,7 +24,7 @@ def refresh_graph_data():
     return jsonify(sLabel=labels, sData=values)
 
 
-# @app.route('/updateData', methods=['POST'])
+@app.route('/updateData', methods=['POST'])
 def update_data_post():
     global labels, values
     if not request.form or 'data' not in request.form:

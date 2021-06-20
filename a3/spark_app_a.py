@@ -56,7 +56,7 @@ dataStream = ssc.socketTextStream("twitter",9009)
 words = dataStream.flatMap(lambda line: line.split(" "))
 
 # filter the words to get only hashtags
-hashtags = words.filter(lambda w: w in ['#ford', '#jeep', '#toyota', '#nissan', '#honda'])
+hashtags = words.filter(lambda w: w in ['#Ford', '#Jeep', '#Toyota', '#nissan', '#honda'])
 
 # map each hashtag to be a pair of (hashtag,1)
 hashtag_counts = hashtags.map(lambda x: (x, 1))
@@ -67,6 +67,9 @@ def aggregate_tags_count(new_values, total_sum):
 
 # do the aggregation, note that now this is a sequence of RDDs
 hashtag_totals = hashtag_counts.updateStateByKey(aggregate_tags_count)
+
+# writing to an ouput file for our analytics and for our graph data
+graph_info = open('graph_info_a.txt', 'a+')
 
 # process a single time interval
 def process_interval(time, rdd):
@@ -80,6 +83,7 @@ def process_interval(time, rdd):
         # print it nicely
         for tag in top10:
             print('{:<40} {}'.format(tag[0], tag[1]))
+            graph_info.write('{:<40} {}\n'.format(tag[0], tag[1])) 
     except:
         e = sys.exc_info()[0]
         print("Error: %s" % e)

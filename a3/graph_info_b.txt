@@ -1,0 +1,822 @@
+#basketball negative                     1
+#basketball negative                     1
+#basketball negative                     1
+#basketball negative                     1
+#baseball positive                    1
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+#basketball neutral                      1
+                                         0
+#basketball neutral                      1
+                                         0
+#basketball neutral                      1
+                                         0
+#basketball neutral                      1
+                                         0
+#basketball neutral                      1
+                                         0
+#basketball neutral                      1
+                                         0
+#basketball neutral                      1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+                                         0
+#baseball neutral                        1
+                                         0
+#baseball neutral                        1
+                                         0
+#baseball neutral                        1
+                                         0
+#baseball neutral                        1
+                                         0
+#baseball neutral                        1
+                                         0
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      1
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      2
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      3
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      3
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      3
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+#basketball neutral                      4
+#basketball positive                     1
+#baseball neutral                        1
+                                         0
+                                         0
+#basketball positive                     1
+                                         0
+#basketball positive                     1
+                                         0
+#basketball positive                     1
+                                         0
+#basketball positive                     1
+                                         0
+#basketball positive                     1
+                                         0
+#basketball positive                     1
+                                         0
+#basketball positive                     1
+                                         0
+#basketball positive                     1
+                                         0
+#basketball positive                     1
+                                         0
+#basketball positive                     1
+                                         0
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#football neutral                        1
+#basketball positive                     1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     2
+#football neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#baseball neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#baseball neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#basketball neutral                      1
+#baseball neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     3
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     4
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     4
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     4
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     4
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     4
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     4
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     4
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+#baseball neutral                        1
+                                         0
+#basketball positive                     4
+#baseball neutral                        2
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#baseball neutral                        2
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#baseball neutral                        2
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#baseball neutral                        2
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#baseball neutral                        2
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#baseball neutral                        2
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#baseball neutral                        2
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#baseball neutral                        2
+#football neutral                        1
+#basketball neutral                      1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      2
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      3
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      3
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      3
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      3
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      3
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      3
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      3
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
+#basketball positive                     4
+#basketball neutral                      3
+#baseball neutral                        2
+#football neutral                        1
+#baseball negative                       1
+                                         0
