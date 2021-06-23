@@ -36,7 +36,8 @@ def animate(i):
     plt.bar(y_pos, performance, align='center')
     plt.xticks(y_pos, objects)
     plt.ylabel('Hashtag Count')
-    plt.title('Hashtag Name')
+    plt.xlabel('Hashtag Name')
+    plt.title('Live Updates')
 
-ani = animation.FuncAnimation(fig, animate, interval=1000)
+ani = animation.FuncAnimation(fig, animate, interval=3000)
 plt.show()
